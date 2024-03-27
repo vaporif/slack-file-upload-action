@@ -1,17 +1,18 @@
 # Slack file upload action
 
-This action uploads file to slack, simple as that. For now supports only a single file.
+This action uploads file to slack, simple as that. 
+For now supports only a single file.
 
 ## Inputs
 
 ### `token`
 
 **Required** Slack app token. See [Internal app tokens](https://slack.com/intl/en-ru/help/articles/215770388-Create-and-regenerate-API-tokens#internal-app-tokens)
-* Create app
-* Add `files:write` and `files:read` permission
-* Install app to your workspase
-* Invite bot to required channels `/invite <botname>`
-* Use bot token from `OAuth & Permissions` page
+1.Create app
+1. Add `files:write` and `files:read` permission
+1. Install app to your workspase
+1. Invite bot to required channels `/invite <botname>`
+1. Use bot token from `OAuth & Permissions` page
   
 ### `path`
 
@@ -32,11 +33,10 @@ Filename of file
 ### `initial_comment`
 
 The message text introducing the file in specified channels.
-    
 
 ## Example usage
 
-```
+```yaml
 on: [push]
 
 jobs:
@@ -54,4 +54,3 @@ jobs:
           path: test.txt
           channel: random
 ```
-
