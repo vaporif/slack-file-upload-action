@@ -1,23 +1,34 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Slack V2 Upload'
+description: 'Upload File to Slack'
+author: 'Dmytro Onypko <vaporif@gmail.com>'
 
-# Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
-  icon: 'heart'
-  color: 'red'
+  icon: 'upload'
+  color: 'white'
 
-# Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  path:
+    description: 'Path to file'
     required: true
-    default: '1000'
+  token:
+    description: 'Slack token'
+    required: true
+  channel:
+    description: 'Slack channels'
+    required: false
+  thread_ts:
+    description: 'Slack thread_ts'
+    required: false
+  filename:
+    description: 'Filename of file'
+    required: false
+  initial_comment:
+    description: 'The message text introducing the file in specified channels'
+    required: false
 
-# Define your outputs here.
 outputs:
-  time:
-    description: 'Your output description here'
+  result:
+    description: 'response from slack'
 
 runs:
   using: node20
