@@ -6,8 +6,12 @@ export async function run(): Promise<void> {
   try {
     const token = core.getInput('token')
     const path = core.getInput('path')
-    const file_uploads = parseFilesInput(core.getInput('files'))
+    const files = core.getInput('files')
 
+    console.log(files)
+    const file_uploads = parseFilesInput(files)
+
+    console.log(file_uploads)
     if (!existsSync(path)) {
       throw new Error(`File does not exist at path: ${path}`)
     }
