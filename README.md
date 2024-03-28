@@ -50,7 +50,7 @@ jobs:
           mkdir dir
           echo "Test file " > dir/test.txt
       - name: Upload to slack step
-        uses: vaporif/slack-file-upload-action@main
+        uses: vaporif/slack-file-upload-action@v1
         with:
           token: ${{ secrets.SLACK_TOKEN }}
           files: >
