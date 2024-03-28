@@ -1,7 +1,6 @@
 # Slack file upload action
 
-This action uploads file to slack, simple as that. For now supports only a
-single file.
+This action uploads files to slack, simple as that.
 
 ## Inputs
 
