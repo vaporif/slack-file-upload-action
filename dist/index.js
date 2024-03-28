@@ -32934,13 +32934,15 @@ async function run() {
             throw new Error(`File does not exist at path: ${path}`);
         }
         const web = new web_api_1.WebClient(token);
-        const result = await web.files.uploadV2({
+        const data = {
             initial_comment: core.getInput('initial_comment'),
             thread_ts: core.getInput('tread_ts'),
             channel_id: core.getInput('channel_id'),
             title: core.getInput('title'),
             file_uploads
-        });
+        };
+        console.log(data);
+        const result = await web.files.uploadV2(data);
         core.setOutput('result', result);
     }
     catch (error) {
