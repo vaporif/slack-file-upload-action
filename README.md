@@ -23,7 +23,7 @@ single file.
 ### `channel_id`
 
 Slack channel ID for upload **THIS IS NOT A CHANNEL NAME** you can easily check
-for channel id in browser URL
+for channel ID in the browser URL after navigating to channel there
 
 ### `channels`
 
