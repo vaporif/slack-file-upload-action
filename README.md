@@ -25,10 +25,6 @@ single file.
 Slack channel ID for upload **THIS IS NOT A CHANNEL NAME** you can easily check
 for channel ID in the browser URL after navigating to channel there
 
-### `channels`
-
-Comma-separated list of channel_id's for upload
-
 ### `thread_ts`
 
 Slack thread for upload
@@ -59,5 +55,6 @@ jobs:
         with:
           token: ${{ secrets.SLACK_TOKEN }}
           path: test.txt
+          filename: test.txt
           channel_id: C06S5FLDSN4
 ```
