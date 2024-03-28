@@ -24,6 +24,7 @@ export async function run(): Promise<void> {
       title: core.getInput('title'),
       file_uploads
     }
+    console.log('1')
     console.log(data)
     const result = await web.files.uploadV2(data)
 
