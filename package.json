@@ -24,14 +24,14 @@
     "node": ">=20"
   },
   "scripts": {
-    "bundle": "npm run format:write && npm run package",
+    "bundle": "pnpm run format:write && npm run package",
     "coverage": "npx make-coverage-badge --output-path ./badges/coverage.svg",
     "format:write": "npx prettier --write .",
     "format:check": "npx prettier --check .",
     "lint": "npx eslint . -c ./.github/linters/.eslintrc.yml",
     "package": "npx ncc build src/index.ts -o dist --source-map --license licenses.txt",
-    "package:watch": "npm run package -- --watch",
-    "all": "npm run format:write && npm run lint && npm run package"
+    "package:watch": "pnpm run package -- --watch",
+    "all": "pnpm run format:write && pnpm run lint && pnpm run package"
   },
   "license": "MIT",
   "jest": {
