@@ -13,6 +13,12 @@ export async function run(): Promise<void> {
 
     const web = new WebClient(token)
 
+    const channel_id = getInput('channel_id')
+    console.log(channel_id)
+
+    const channels = getInput('channels')
+    console.log(channels)
+
     const result = await web.files.uploadV2({
       initial_comment: getInput('initial_comment'),
       thread_ts: getInput('tread_ts'),

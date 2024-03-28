@@ -32907,6 +32907,10 @@ async function run() {
             throw new Error(`File does not exist at path: ${path}`);
         }
         const web = new web_api_1.WebClient(token);
+        const channel_id = (0, core_1.getInput)('channel_id');
+        console.log(channel_id);
+        const channels = (0, core_1.getInput)('channels');
+        console.log(channels);
         const result = await web.files.uploadV2({
             initial_comment: (0, core_1.getInput)('initial_comment'),
             thread_ts: (0, core_1.getInput)('tread_ts'),
