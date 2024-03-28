@@ -9,8 +9,10 @@ export async function run(): Promise<void> {
     core.debug(files)
 
     const file_uploads = parseFilesInput(files)
+    console.log(file_uploads)
 
     for (const file of file_uploads) {
+      console.log(file)
       if (!existsSync(file.file)) {
         throw new Error(`File does not exist at path: ${file.file}`)
       }

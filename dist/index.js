@@ -32928,7 +32928,9 @@ async function run() {
         const files = core.getInput('files');
         core.debug(files);
         const file_uploads = parseFilesInput(files);
+        console.log(file_uploads);
         for (const file of file_uploads) {
+            console.log(file);
             if (!(0, fs_1.existsSync)(file.file)) {
                 throw new Error(`File does not exist at path: ${file.file}`);
             }
