@@ -17,6 +17,8 @@ export async function run(): Promise<void> {
       initial_comment: getInput('initial_comment'),
       thread_ts: getInput('tread_ts'),
       channel_id: getInput('channel'),
+      title: getInput('title'),
+      token,
       file_uploads: [
         {
           file: `./${path}`,

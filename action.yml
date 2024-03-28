@@ -20,12 +20,14 @@ inputs:
     description: 'Slack thread_ts'
     required: false
   filename:
-    description: 'Filename of file'
+    description: 'Filename of a file'
     required: false
   initial_comment:
-    description: 'The message text introducing the file in specified channels'
+    description: 'Message text introducing file in channels'
     required: false
-
+  title:
+    description: 'File title'
+    required: false
 outputs:
   result:
     description: 'response from slack'
