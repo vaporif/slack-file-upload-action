@@ -13,8 +13,11 @@ inputs:
   token:
     description: 'Slack token'
     required: true
-  channel:
-    description: 'Slack channels'
+  channel_id:
+    description: 'Slack channel_id'
+    required: false
+  channels:
+    description: 'Comma-separated list of channel_id for upload'
     required: false
   thread_ts:
     description: 'Slack thread_ts'
