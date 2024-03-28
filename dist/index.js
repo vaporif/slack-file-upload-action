@@ -32925,12 +32925,13 @@ const web_api_1 = __nccwpck_require__(2785);
 async function run() {
     try {
         const token = core.getInput('token');
-        const path = core.getInput('path');
         const files = core.getInput('files');
+        console.log(files);
+        core.debug(files);
         const file_uploads = parseFilesInput(files);
         for (const file of file_uploads) {
             if (!(0, fs_1.existsSync)(file.file)) {
-                throw new Error(`File does not exist at path: ${path}`);
+                throw new Error(`File does not exist at path: ${file.file}`);
             }
         }
         const web = new web_api_1.WebClient(token);

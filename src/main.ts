@@ -5,14 +5,15 @@ import { WebClient } from '@slack/web-api'
 export async function run(): Promise<void> {
   try {
     const token = core.getInput('token')
-    const path = core.getInput('path')
     const files = core.getInput('files')
+    console.log(files)
+    core.debug(files)
 
     const file_uploads = parseFilesInput(files)
 
     for (const file of file_uploads) {
       if (!existsSync(file.file)) {
-        throw new Error(`File does not exist at path: ${path}`)
+        throw new Error(`File does not exist at path: ${file.file}`)
       }
     }
 
