@@ -16,26 +16,20 @@ single file.
 1. Invite bot to required channels `/invite <botname>`
 1. Use bot token from `OAuth & Permissions` page
 
-### `path`
+### `files`
 
-**Required** Path to file
+List of files including file path and filename
+
+**Required**
 
 ### `channel_id`
 
 Slack channel ID for upload **THIS IS NOT A CHANNEL NAME** you can easily check
 for channel ID in the browser URL after navigating to channel there
 
-### `channels`
-
-Comma-separated list of channel_id's for upload
-
 ### `thread_ts`
 
 Slack thread for upload
-
-### `filename`
-
-Filename of file, recommended to set
 
 ### `initial_comment`
 
@@ -53,11 +47,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - run: echo "Test file " > test.txt
+      - run: |
+          mkdir dir
+          echo "Test file " > dir/test.txt
       - name: Upload to slack step
         uses: vaporif/slack-file-upload-action@main
         with:
           token: ${{ secrets.SLACK_TOKEN }}
-          path: test.txt
+          files: '[{"file": "dir/test.txt", "filename": "testfile.txt"}]'
           channel_id: C06S5FLDSN4
 ```

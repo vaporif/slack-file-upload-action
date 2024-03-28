@@ -7,11 +7,12 @@ branding:
   color: 'white'
 
 inputs:
-  path:
-    description: 'Path to file'
-    required: true
   token:
     description: 'Slack token'
+    required: true
+  files:
+    description: 'List of files including file path and filename'
+    default: '[]'
     required: true
   channel_id:
     description: 'Slack channel_id'
@@ -19,14 +20,11 @@ inputs:
   thread_ts:
     description: 'Slack thread_ts'
     required: false
-  filename:
-    description: 'Filename of a file'
-    required: false
   initial_comment:
-    description: 'Message text introducing file in channels'
+    description: 'Message with file post'
     required: false
   title:
-    description: 'File title'
+    description: 'Title'
     required: false
 outputs:
   result:

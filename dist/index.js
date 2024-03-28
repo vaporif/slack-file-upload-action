@@ -32903,6 +32903,7 @@ async function run() {
     try {
         const token = (0, core_1.getInput)('token');
         const path = (0, core_1.getInput)('path');
+        const file_uploads = parseFilesInput((0, core_1.getInput)('files'));
         if (!(0, fs_1.existsSync)(path)) {
             throw new Error(`File does not exist at path: ${path}`);
         }
@@ -32912,12 +32913,7 @@ async function run() {
             thread_ts: (0, core_1.getInput)('tread_ts'),
             channel_id: (0, core_1.getInput)('channel_id'),
             title: (0, core_1.getInput)('title'),
-            file_uploads: [
-                {
-                    file: `./${path}`,
-                    filename: `${(0, core_1.getInput)('filename')}`
-                }
-            ]
+            file_uploads
         });
         (0, core_1.setOutput)('result', result);
     }
@@ -32931,6 +32927,21 @@ async function run() {
     }
 }
 exports.run = run;
+function parseFilesInput(input) {
+    const files = JSON.parse(input);
+    if (!Array.isArray(files)) {
+        throw new Error('Input must be an array');
+    }
+    for (const file of files) {
+        if (typeof file.file !== 'string' || typeof file.filename !== 'string') {
+            throw new Error('Each file object must have a "file" and "filename" property');
+        }
+    }
+    if (files.length === 0) {
+        throw new Error('At least one file should be added');
+    }
+    return files;
+}
 
 
 /***/ }),
