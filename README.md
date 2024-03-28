@@ -22,8 +22,8 @@ single file.
 
 ### `channel_id`
 
-Slack channel*id for upload \_THIS IS NOT A CHANNEL NAME* you can easily check
-for channel id in browser url
+Slack channel ID for upload **THIS IS NOT A CHANNEL NAME** you can easily check
+for channel id in browser URL
 
 ### `channels`
 
