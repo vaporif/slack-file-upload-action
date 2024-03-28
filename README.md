@@ -8,7 +8,7 @@ For now supports only a single file.
 ### `token`
 
 **Required** Slack app token. See [Internal app tokens](https://slack.com/intl/en-ru/help/articles/215770388-Create-and-regenerate-API-tokens#internal-app-tokens)
-1.Create app
+1. Create app
 1. Add `files:write` and `files:read` permission
 1. Install app to your workspase
 1. Invite bot to required channels `/invite <botname>`
@@ -48,7 +48,7 @@ jobs:
         uses: actions/checkout@v4
       - run: echo "Test file " > test.txt
       - name: Upload to slack step
-        uses: vaporif/slack-file-upload-action@master
+        uses: vaporif/slack-file-upload-action@main
         with:
           token: ${{ secrets.SLACK_TOKEN }}
           path: test.txt
