@@ -16,14 +16,10 @@ export async function run(): Promise<void> {
     const channel_id = getInput('channel_id')
     console.log(channel_id)
 
-    const channels = getInput('channels')
-    console.log(channels)
-
     const result = await web.files.uploadV2({
       initial_comment: getInput('initial_comment'),
       thread_ts: getInput('tread_ts'),
       channel_id: getInput('channel_id'),
-      channels: getInput('channels'),
       title: getInput('title'),
 
       file_uploads: [
