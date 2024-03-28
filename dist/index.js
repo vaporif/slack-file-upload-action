@@ -32927,11 +32927,11 @@ async function run() {
         const token = core.getInput('token');
         const path = core.getInput('path');
         const files = core.getInput('files');
-        console.log(files);
         const file_uploads = parseFilesInput(files);
-        console.log(file_uploads);
-        if (!(0, fs_1.existsSync)(path)) {
-            throw new Error(`File does not exist at path: ${path}`);
+        for (const file of file_uploads) {
+            if (!(0, fs_1.existsSync)(file.file)) {
+                throw new Error(`File does not exist at path: ${path}`);
+            }
         }
         const web = new web_api_1.WebClient(token);
         const data = {
@@ -32941,8 +32941,6 @@ async function run() {
             title: core.getInput('title'),
             file_uploads
         };
-        console.log('1');
-        console.log(data);
         const result = await web.files.uploadV2(data);
         core.setOutput('result', result);
     }
