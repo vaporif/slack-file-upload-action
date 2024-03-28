@@ -19,7 +19,7 @@ export async function run(): Promise<void> {
       channel_id: getInput('channel_id'),
       channels: getInput('channels'),
       title: getInput('title'),
-      token,
+
       file_uploads: [
         {
           file: `./${path}`,
