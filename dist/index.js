@@ -32910,7 +32910,10 @@ async function run() {
         const result = await web.files.uploadV2({
             initial_comment: (0, core_1.getInput)('initial_comment'),
             thread_ts: (0, core_1.getInput)('tread_ts'),
-            channel_id: (0, core_1.getInput)('channel'),
+            channel_id: (0, core_1.getInput)('channel_id'),
+            channels: (0, core_1.getInput)('channels'),
+            title: (0, core_1.getInput)('title'),
+            token,
             file_uploads: [
                 {
                     file: `./${path}`,
