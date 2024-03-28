@@ -18,7 +18,8 @@ single file.
 
 ### `files`
 
-**Required** List of files including file path and filename
+**Required** List of files including file path and filename remember json wont
+work with backslashes so you might need `${{ toJSON(variable) }}`
 
 ### `channel_id`
 
@@ -52,6 +53,10 @@ jobs:
         uses: vaporif/slack-file-upload-action@main
         with:
           token: ${{ secrets.SLACK_TOKEN }}
-          files: '[{"file": "dir/test.txt", "filename": "testfile.txt"}]'
+          files: >
+            [
+              {"file": "dir/test.txt", "filename": "testfile.txt"},
+              {"file": "dir/test.txt", "filename": "testfile.txt"}
+            ]
           channel_id: C06S5FLDSN4
 ```

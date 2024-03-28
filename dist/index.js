@@ -32926,7 +32926,6 @@ async function run() {
     try {
         const token = core.getInput('token');
         const files = core.getInput('files');
-        console.log(files);
         core.debug(files);
         const file_uploads = parseFilesInput(files);
         for (const file of file_uploads) {
