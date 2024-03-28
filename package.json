@@ -2,7 +2,7 @@
   "name": "slack-v2-upload-action",
   "author": "Dmytro Onypko <vaporif@gmail.com>",
   "description": "Slack Files V2 upload GitHub Action",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": false,
   "homepage": "https://github.com/vaporif/slack-file-upload-action",
   "repository": {

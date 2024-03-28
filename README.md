@@ -20,9 +20,14 @@ single file.
 
 **Required** Path to file
 
-### `channel`
+### `channel_id`
 
-Slack channel for upload
+Slack channel*id for upload \_THIS IS NOT A CHANNEL NAME* you can easily check
+for channel id in browser url
+
+### `channels`
+
+Comma-separated list of channel_id's for upload
 
 ### `thread_ts`
 
@@ -30,7 +35,7 @@ Slack thread for upload
 
 ### `filename`
 
-Filename of file
+Filename of file, recommended to set
 
 ### `initial_comment`
 
@@ -54,5 +59,5 @@ jobs:
         with:
           token: ${{ secrets.SLACK_TOKEN }}
           path: test.txt
-          channel: random
+          channel_id: C06S5FLDSN4
 ```
