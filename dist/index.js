@@ -32890,36 +32890,59 @@ exports["default"] = _default;
 /***/ }),
 
 /***/ 9356:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = void 0;
-const core_1 = __nccwpck_require__(9093);
+const core = __importStar(__nccwpck_require__(9093));
 const fs_1 = __nccwpck_require__(7147);
 const web_api_1 = __nccwpck_require__(2785);
 async function run() {
     try {
-        const token = (0, core_1.getInput)('token');
-        const path = (0, core_1.getInput)('path');
-        const file_uploads = parseFilesInput((0, core_1.getInput)('files'));
+        const token = core.getInput('token');
+        const path = core.getInput('path');
+        const file_uploads = parseFilesInput(core.getInput('files'));
         if (!(0, fs_1.existsSync)(path)) {
             throw new Error(`File does not exist at path: ${path}`);
         }
         const web = new web_api_1.WebClient(token);
         const result = await web.files.uploadV2({
-            initial_comment: (0, core_1.getInput)('initial_comment'),
-            thread_ts: (0, core_1.getInput)('tread_ts'),
-            channel_id: (0, core_1.getInput)('channel_id'),
-            title: (0, core_1.getInput)('title'),
+            initial_comment: core.getInput('initial_comment'),
+            thread_ts: core.getInput('tread_ts'),
+            channel_id: core.getInput('channel_id'),
+            title: core.getInput('title'),
             file_uploads
         });
-        (0, core_1.setOutput)('result', result);
+        core.setOutput('result', result);
     }
     catch (error) {
         if (error instanceof Error) {
-            (0, core_1.setFailed)(error.message);
+            core.setFailed(error.message);
         }
         else {
             throw error;
@@ -32935,6 +32958,9 @@ function parseFilesInput(input) {
     for (const file of files) {
         if (typeof file.file !== 'string' || typeof file.filename !== 'string') {
             throw new Error('Each file object must have a "file" and "filename" property');
+        }
+        if (!file.file.startsWith('./')) {
+            file.file = `./${file.file}`;
         }
     }
     if (files.length === 0) {

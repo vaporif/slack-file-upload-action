@@ -18,9 +18,7 @@ single file.
 
 ### `files`
 
-List of files including file path and filename
-
-**Required**
+**Required** List of files including file path and filename
 
 ### `channel_id`
 
