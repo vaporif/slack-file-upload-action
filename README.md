@@ -1,6 +1,7 @@
 # Slack file upload action
 
-This action uploads files to slack, simple as that.
+This action uploads file to slack, simple as that. For now supports only a
+single file.
 
 ## Inputs
 
@@ -54,8 +55,8 @@ jobs:
           token: ${{ secrets.SLACK_TOKEN }}
           files: >
             [
-              {"file": "dir/test.txt", "filename": "testfile.txt"},
-              {"file": "dir/test.txt", "filename": "testfile.txt"}
+              {"file": "./dir/test.txt", "filename": "testfile.txt"},
+              {"file": "./dir/test.txt", "filename": "testfile.txt"}
             ]
           channel_id: C06S5FLDSN4
 ```

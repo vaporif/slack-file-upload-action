@@ -32920,7 +32920,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = void 0;
 const core = __importStar(__nccwpck_require__(9093));
-const fs_1 = __nccwpck_require__(7147);
 const web_api_1 = __nccwpck_require__(2785);
 async function run() {
     try {
@@ -32928,13 +32927,6 @@ async function run() {
         const files = core.getInput('files');
         core.debug(files);
         const file_uploads = parseFilesInput(files);
-        console.log(file_uploads);
-        for (const file of file_uploads) {
-            console.log(file);
-            if (!(0, fs_1.existsSync)(file.file)) {
-                throw new Error(`File does not exist at path: ${file.file}`);
-            }
-        }
         const web = new web_api_1.WebClient(token);
         const data = {
             initial_comment: core.getInput('initial_comment'),
@@ -32964,9 +32956,6 @@ function parseFilesInput(input) {
     for (const file of files) {
         if (typeof file.file !== 'string' || typeof file.filename !== 'string') {
             throw new Error('Each file object must have a "file" and "filename" property');
-        }
-        if (!file.file.startsWith('./')) {
-            file.file = `./${file.file}`;
         }
     }
     if (files.length === 0) {
