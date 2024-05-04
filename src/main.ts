@@ -12,7 +12,7 @@ export async function run(): Promise<void> {
     const web = new WebClient(token)
     const data = {
       initial_comment: core.getInput('initial_comment'),
-      thread_ts: core.getInput('tread_ts'),
+      thread_ts: core.getInput('thread_ts'),
       channel_id: core.getInput('channel_id'),
       title: core.getInput('title'),
       file_uploads
