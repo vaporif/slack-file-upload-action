@@ -8,7 +8,6 @@
 
 import * as core from '@actions/core'
 import * as main from '../src/main'
-import { env } from 'process'
 
 const runMock = jest.spyOn(main, 'run')
 
@@ -32,7 +31,7 @@ describe('action', () => {
     getInputMock.mockImplementation(name => {
       switch (name) {
         case 'token':
-          return `${env.SLACK_OUATH_TOKEN}`
+          return `${process.env.SLACK_OAUTH_TOKEN}`
         case 'files':
           return JSON.stringify(files)
         case 'initial_comment':
