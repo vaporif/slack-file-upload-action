@@ -32950,9 +32950,18 @@ async function run() {
 }
 exports.run = run;
 function parseFilesInput(input) {
-    const files = JSON.parse(input);
+    let files = [];
+    try {
+        files = JSON.parse(input);
+    }
+    catch (error) {
+        throw new Error('Could not parse files array', { cause: error });
+    }
     if (!Array.isArray(files)) {
         throw new Error('Input must be an array');
+    }
+    if (files.length < 1) {
+        throw new Error('At least one file should be added');
     }
     for (const file of files) {
         if (typeof file.file !== 'string' || typeof file.filename !== 'string') {

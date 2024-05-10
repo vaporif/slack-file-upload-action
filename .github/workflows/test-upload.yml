@@ -1,0 +1,42 @@
+name: Action Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: build-${{ github.event.number || github.ref }}-pr-check
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test-single-channel:
+    name: Test upload single
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          cache-dependency-path: 'pnpm-lock.yaml'
+
+      - name: Install Dependencies
+        id: install
+        run: pnpm i --frozen-lockfile
+
+      - name: test
+        run: pnpm test
+        env:
+          SLACK_OAUTH_TOKEN: ${{ secrets.SLACK_OAUTH_TOKEN }}
