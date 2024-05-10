@@ -1,6 +1,9 @@
 name: Action Check
 
-on: [pull_request]
+on:
+  pull_request:
+    branches:
+      - main
 
 concurrency:
   group: build-${{ github.event.number || github.ref }}-pr-check
