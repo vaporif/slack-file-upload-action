@@ -38,7 +38,7 @@ jobs:
 
       - name: Set up environment variable
         run:
-          echo "MY_SECRET_VALUE=${{ secrets.SLACK_OUATH_TOKEN }}" >> $GITHUB_ENV
+          echo "MY_SECRET_VALUE=${{ secrets.SLACK_OAUTH_TOKEN }}" >> $GITHUB_ENV
 
       - name: test
         run: pnpm test
