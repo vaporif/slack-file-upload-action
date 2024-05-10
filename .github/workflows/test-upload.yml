@@ -1,8 +1,11 @@
 
 name: Test Upload
 
-on:
-  pull_request:
+on: [pull_request]
+
+concurrency:
+  group: build-${{ github.event.number || github.ref }}-pr-check
+  cancel-in-progress: true
 
 jobs:
   test-single-channel:
