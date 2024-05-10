@@ -31,7 +31,7 @@ describe('action', () => {
 
     setFailedMock = jest
       .spyOn(core, 'setFailed')
-    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
       .mockImplementation((failed: any) => {
         console.log(`setFailed called with ${failed}`)
       })
@@ -55,6 +55,7 @@ describe('action', () => {
       }
     })
 
+    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     setOutputMock.mockImplementation((_: string, value: any) => {
       expect(value).toBeDefined()
       expect(value.ok).toBe(true)
