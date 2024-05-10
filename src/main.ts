@@ -30,12 +30,11 @@ export async function run(): Promise<void> {
 }
 
 function parseFilesInput(input: string): FileObject[] {
-  let files: FileObject[] = [];
+  let files: FileObject[] = []
   try {
-    files = JSON.parse(input) 
-  }
-  catch (error) {
-    throw new Error('Could not parse files array', { cause: error });
+    files = JSON.parse(input)
+  } catch (error) {
+    throw new Error('Could not parse files array', { cause: error })
   }
 
   if (!Array.isArray(files)) {
@@ -43,7 +42,7 @@ function parseFilesInput(input: string): FileObject[] {
   }
 
   if (files.length < 1) {
-    throw new Error('At least one file should be added');
+    throw new Error('At least one file should be added')
   }
 
   for (const file of files) {
