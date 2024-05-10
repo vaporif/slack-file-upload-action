@@ -1,5 +1,4 @@
-
-name: Test Upload
+name: Action Check
 
 on: [pull_request]
 
