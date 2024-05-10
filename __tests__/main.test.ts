@@ -14,6 +14,7 @@ const runMock = jest.spyOn(main, 'run')
 let errorMock: jest.SpiedFunction<typeof core.error>
 let getInputMock: jest.SpiedFunction<typeof core.getInput>
 let setFailedMock: jest.SpiedFunction<typeof core.setFailed>
+let setOutputMock: jest.SpiedFunction<typeof core.setOutput>
 
 const CHANNEL_ID = 'C072N8BE71U'
 
@@ -21,9 +22,17 @@ describe('action', () => {
   beforeEach(() => {
     jest.clearAllMocks()
 
-    errorMock = jest.spyOn(core, 'error').mockImplementation()
+    errorMock = jest.spyOn(core, 'error').mockImplementation((error: any) => {
+      console.log(`error called with ${error}`)
+    })
+
     getInputMock = jest.spyOn(core, 'getInput').mockImplementation()
-    setFailedMock = jest.spyOn(core, 'setFailed').mockImplementation()
+    setFailedMock = jest
+      .spyOn(core, 'setFailed')
+      .mockImplementation((failed: any) => {
+        console.log(`setFailed called with ${failed}`)
+      })
+    setOutputMock = jest.spyOn(core, 'setOutput').mockImplementation()
   })
 
   it('uploads file', async () => {
@@ -43,16 +52,16 @@ describe('action', () => {
       }
     })
 
+    setOutputMock.mockImplementation((_: string, value: any) => {
+      expect(value).toBeDefined()
+      expect(value.ok).toBe(true)
+    })
+
     await main.run()
     expect(runMock).toHaveReturned()
 
-    if (setFailedMock.mock.calls.length > 0) {
-      console.log('setFailedMock was called with the following parameters:')
-      for (const ele of setFailedMock.mock.calls) {
-        console.log(`Call ${ele}`)
-      }
-    }
     expect(setFailedMock).not.toHaveBeenCalled()
     expect(errorMock).not.toHaveBeenCalled()
+    expect(setOutputMock).toHaveBeenCalled()
   })
 })
