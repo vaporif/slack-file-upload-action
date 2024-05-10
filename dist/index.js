@@ -2061,7 +2061,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 5083:
+/***/ 5005:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -2134,13 +2134,13 @@ const axios_1 = __importDefault(__nccwpck_require__(314));
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const form_data_1 = __importDefault(__nccwpck_require__(6698));
 const is_electron_1 = __importDefault(__nccwpck_require__(1152));
-const methods_1 = __nccwpck_require__(5647);
-const instrument_1 = __nccwpck_require__(3055);
-const errors_1 = __nccwpck_require__(6647);
-const logger_1 = __nccwpck_require__(24);
-const retry_policies_1 = __nccwpck_require__(9732);
-const helpers_1 = __importDefault(__nccwpck_require__(5899));
-const file_upload_1 = __nccwpck_require__(5956);
+const methods_1 = __nccwpck_require__(9014);
+const instrument_1 = __nccwpck_require__(1010);
+const errors_1 = __nccwpck_require__(1458);
+const logger_1 = __nccwpck_require__(7130);
+const retry_policies_1 = __nccwpck_require__(7957);
+const helpers_1 = __importDefault(__nccwpck_require__(3504));
+const file_upload_1 = __nccwpck_require__(2321);
 /*
  * Helpers
  */
@@ -2514,7 +2514,7 @@ class WebClient extends methods_1.Methods {
                             // resume the request queue and throw a non-abort error to signal a retry
                             this.requestQueue.start();
                             // TODO: We may want to have more detailed info such as team_id, params except tokens, and so on.
-                            throw Error(`A rate limit was exceeded (url: ${url}, retry-after: ${retrySec})`);
+                            throw new Error(`A rate limit was exceeded (url: ${url}, retry-after: ${retrySec})`);
                         }
                         else {
                             // TODO: turn this into some CodedError
@@ -2833,7 +2833,7 @@ function redact(body) {
 
 /***/ }),
 
-/***/ 6647:
+/***/ 1458:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2917,7 +2917,7 @@ exports.rateLimitedErrorWithDelay = rateLimitedErrorWithDelay;
 
 /***/ }),
 
-/***/ 5956:
+/***/ 2321:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -2935,7 +2935,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.buildInvalidFilesUploadParamError = exports.buildMultipleChannelsErrorMsg = exports.buildChannelsWarning = exports.buildFilesUploadMissingMessage = exports.buildGeneralFilesUploadWarning = exports.buildLegacyMethodWarning = exports.buildMissingExtensionWarning = exports.buildMissingFileNameWarning = exports.buildLegacyFileTypeWarning = exports.buildFileSizeErrorMsg = exports.buildMissingFileIdError = exports.warnIfLegacyFileType = exports.warnIfMissingOrInvalidFileNameAndDefault = exports.errorIfInvalidOrMissingFileData = exports.errorIfChannelsCsv = exports.warnIfChannels = exports.warnIfNotUsingFilesUploadV2 = exports.getAllFileUploadsToComplete = exports.getFileDataAsStream = exports.getFileDataLength = exports.getFileData = exports.getMultipleFileUploadJobs = exports.getFileUploadJob = void 0;
 const fs_1 = __nccwpck_require__(7147);
 const stream_1 = __nccwpck_require__(2781);
-const errors_1 = __nccwpck_require__(6647);
+const errors_1 = __nccwpck_require__(1458);
 function getFileUploadJob(options, logger) {
     var _a, _b, _c, _d;
     return __awaiter(this, void 0, void 0, function* () {
@@ -3294,7 +3294,7 @@ exports.buildInvalidFilesUploadParamError = buildInvalidFilesUploadParamError;
 
 /***/ }),
 
-/***/ 5899:
+/***/ 3504:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -3315,7 +3315,7 @@ exports["default"] = delay;
 
 /***/ }),
 
-/***/ 2785:
+/***/ 8463:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -3340,25 +3340,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.addAppMetadata = exports.retryPolicies = exports.ErrorCode = exports.LogLevel = exports.WebClientEvent = exports.WebClient = void 0;
-var WebClient_1 = __nccwpck_require__(5083);
+var WebClient_1 = __nccwpck_require__(5005);
 Object.defineProperty(exports, "WebClient", ({ enumerable: true, get: function () { return WebClient_1.WebClient; } }));
 Object.defineProperty(exports, "WebClientEvent", ({ enumerable: true, get: function () { return WebClient_1.WebClientEvent; } }));
-var logger_1 = __nccwpck_require__(24);
+var logger_1 = __nccwpck_require__(7130);
 Object.defineProperty(exports, "LogLevel", ({ enumerable: true, get: function () { return logger_1.LogLevel; } }));
-var errors_1 = __nccwpck_require__(6647);
+var errors_1 = __nccwpck_require__(1458);
 Object.defineProperty(exports, "ErrorCode", ({ enumerable: true, get: function () { return errors_1.ErrorCode; } }));
-var retry_policies_1 = __nccwpck_require__(9732);
+var retry_policies_1 = __nccwpck_require__(7957);
 Object.defineProperty(exports, "retryPolicies", ({ enumerable: true, get: function () { return __importDefault(retry_policies_1).default; } }));
-var instrument_1 = __nccwpck_require__(3055);
+var instrument_1 = __nccwpck_require__(1010);
 Object.defineProperty(exports, "addAppMetadata", ({ enumerable: true, get: function () { return instrument_1.addAppMetadata; } }));
-__exportStar(__nccwpck_require__(5647), exports);
-__exportStar(__nccwpck_require__(4175), exports);
-__exportStar(__nccwpck_require__(3786), exports);
+__exportStar(__nccwpck_require__(9014), exports);
+__exportStar(__nccwpck_require__(5889), exports);
+__exportStar(__nccwpck_require__(1096), exports);
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 3055:
+/***/ 1010:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -3391,7 +3391,7 @@ exports.getUserAgent = exports.addAppMetadata = void 0;
 const os = __importStar(__nccwpck_require__(2037));
 const path_1 = __nccwpck_require__(1017);
 // eslint-disable-next-line @typescript-eslint/no-var-requires, import/no-commonjs
-const packageJson = __nccwpck_require__(4102);
+const packageJson = __nccwpck_require__(9843);
 /**
  * Replaces occurrences of '/' with ':' in a string, since '/' is meaningful inside User-Agent strings as a separator.
  */
@@ -3430,7 +3430,7 @@ exports.getUserAgent = getUserAgent;
 
 /***/ }),
 
-/***/ 24:
+/***/ 7130:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -3466,7 +3466,7 @@ exports.getLogger = getLogger;
 
 /***/ }),
 
-/***/ 5647:
+/***/ 9014:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -3488,7 +3488,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Methods = void 0;
 const eventemitter3_1 = __nccwpck_require__(9600);
-const WebClient_1 = __nccwpck_require__(5083);
+const WebClient_1 = __nccwpck_require__(5005);
 /**
  * Binds a certain `method` and its arguments and result types to the `apiCall` method in `WebClient`.
  */
@@ -4439,6 +4439,7 @@ class Methods extends eventemitter3_1.EventEmitter {
             sharedPublicURL: bindApiCall(this, 'files.sharedPublicURL'),
             /**
              * @description Uploads or creates a file.
+             * @deprecated Use `uploadV2` instead. See {@link https://api.slack.com/changelog/2024-04-a-better-way-to-upload-files-is-here-to-stay our post on retiring `files.upload`}.
              * @see {@link https://api.slack.com/methods/files.upload `files.upload` API reference}.
              */
             upload: bindApiCall(this, 'files.upload'),
@@ -4886,7 +4887,7 @@ __exportStar(__nccwpck_require__(3814), exports);
 
 /***/ }),
 
-/***/ 9732:
+/***/ 7957:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -4927,7 +4928,7 @@ exports["default"] = policies;
 
 /***/ }),
 
-/***/ 4175:
+/***/ 5889:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -4937,7 +4938,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 3786:
+/***/ 1096:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -32920,7 +32921,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = void 0;
 const core = __importStar(__nccwpck_require__(9093));
-const web_api_1 = __nccwpck_require__(2785);
+const web_api_1 = __nccwpck_require__(8463);
 async function run() {
     try {
         const token = core.getInput('token');
@@ -39186,11 +39187,11 @@ module.exports = axios;
 
 /***/ }),
 
-/***/ 4102:
+/***/ 9843:
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"@slack/web-api","version":"7.0.2","description":"Official library for using the Slack Platform\'s Web API","author":"Slack Technologies, LLC","license":"MIT","keywords":["slack","web-api","bot","client","http","api","proxy","rate-limiting","pagination"],"main":"dist/index.js","types":"./dist/index.d.ts","files":["dist/**/*"],"engines":{"node":">= 18","npm":">= 8.6.0"},"repository":"slackapi/node-slack-sdk","homepage":"https://slack.dev/node-slack-sdk/web-api","publishConfig":{"access":"public"},"bugs":{"url":"https://github.com/slackapi/node-slack-sdk/issues"},"scripts":{"prepare":"npm run build","build":"npm run build:clean && tsc","build:clean":"shx rm -rf ./dist ./coverage ./.nyc_output","lint":"eslint --ext .ts src","mocha":"mocha --config .mocharc.json src/*.spec.js","test":"npm run lint && npm run test:unit && npm run test:types && npm run test:integration","test:integration":"npm run build && node test/integration/commonjs-project/index.js && node test/integration/esm-project/index.mjs","test:unit":"npm run build && nyc --reporter=text-summary npm run mocha","test:types":"tsd","ref-docs:model":"api-extractor run","watch":"npx nodemon --watch \'src\' --ext \'ts\' --exec npm run build"},"dependencies":{"@slack/logger":"^4.0.0","@slack/types":"^2.9.0","@types/node":">=18.0.0","axios":"^1.6.5","eventemitter3":"^5.0.1","form-data":"^4.0.0","is-electron":"2.2.2","is-stream":"^2","p-queue":"^6","p-retry":"^4","retry":"^0.13.1"},"devDependencies":{"@microsoft/api-extractor":"^7","@tsconfig/recommended":"^1","@types/chai":"^4","@types/mocha":"^10","@types/sinon":"^17","@typescript-eslint/eslint-plugin":"^6","@typescript-eslint/parser":"^6","busboy":"^1","chai":"^4","eslint":"^8","eslint-config-airbnb-base":"^15","eslint-config-airbnb-typescript":"^17","eslint-plugin-import":"^2","eslint-plugin-import-newlines":"^1.3.4","eslint-plugin-jsdoc":"^48","eslint-plugin-node":"^11","mocha":"^10","nock":"^13","nyc":"^15","shx":"^0.3.2","sinon":"^17","source-map-support":"^0.5.21","ts-node":"^10","tsd":"^0.30.0","typescript":"5.3.3"},"tsd":{"directory":"test/types"}}');
+module.exports = JSON.parse('{"name":"@slack/web-api","version":"7.0.4","description":"Official library for using the Slack Platform\'s Web API","author":"Slack Technologies, LLC","license":"MIT","keywords":["slack","web-api","bot","client","http","api","proxy","rate-limiting","pagination"],"main":"dist/index.js","types":"./dist/index.d.ts","files":["dist/**/*"],"engines":{"node":">= 18","npm":">= 8.6.0"},"repository":"slackapi/node-slack-sdk","homepage":"https://slack.dev/node-slack-sdk/web-api","publishConfig":{"access":"public"},"bugs":{"url":"https://github.com/slackapi/node-slack-sdk/issues"},"scripts":{"prepare":"npm run build","build":"npm run build:clean && tsc","build:clean":"shx rm -rf ./dist ./coverage ./.nyc_output","lint":"eslint --ext .ts src","mocha":"mocha --config .mocharc.json src/*.spec.js","test":"npm run lint && npm run test:unit && npm run test:types && npm run test:integration","test:integration":"npm run build && node test/integration/commonjs-project/index.js && node test/integration/esm-project/index.mjs","test:unit":"npm run build && nyc --reporter=text-summary npm run mocha","test:types":"tsd","ref-docs:model":"api-extractor run","watch":"npx nodemon --watch \'src\' --ext \'ts\' --exec npm run build"},"dependencies":{"@slack/logger":"^4.0.0","@slack/types":"^2.9.0","@types/node":">=18.0.0","@types/retry":"0.12.0","axios":"^1.6.5","eventemitter3":"^5.0.1","form-data":"^4.0.0","is-electron":"2.2.2","is-stream":"^2","p-queue":"^6","p-retry":"^4","retry":"^0.13.1"},"devDependencies":{"@microsoft/api-extractor":"^7","@tsconfig/recommended":"^1","@types/chai":"^4","@types/mocha":"^10","@types/sinon":"^17","@typescript-eslint/eslint-plugin":"^6","@typescript-eslint/parser":"^6","busboy":"^1","chai":"^4","eslint":"^8","eslint-config-airbnb-base":"^15","eslint-config-airbnb-typescript":"^17","eslint-plugin-import":"^2","eslint-plugin-import-newlines":"^1.3.4","eslint-plugin-jsdoc":"^48","eslint-plugin-node":"^11","mocha":"^10","nock":"^13","nyc":"^15","shx":"^0.3.2","sinon":"^17","source-map-support":"^0.5.21","ts-node":"^10","tsd":"^0.30.0","typescript":"5.3.3"},"tsd":{"directory":"test/types"}}');
 
 /***/ }),
 
