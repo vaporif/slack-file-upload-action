@@ -30,10 +30,24 @@ export async function run(): Promise<void> {
 }
 
 function parseFilesInput(input: string): FileObject[] {
-  const files: FileObject[] = JSON.parse(input)
+  if (!input) {
+    throw new Error('files input is empty');
+  }
+
+  let files: FileObject[] = [];
+  try {
+    files = JSON.parse(input) 
+  }
+  catch (error) {
+    throw new Error('Could not parse files array', { cause: error });
+  }
 
   if (!Array.isArray(files)) {
     throw new Error('Input must be an array')
+  }
+
+  if (files.length < 1) {
+    throw new Error('At least one file should be added');
   }
 
   for (const file of files) {
