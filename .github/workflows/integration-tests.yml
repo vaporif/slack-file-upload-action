@@ -4,6 +4,11 @@ on:
   pull_request:
     branches:
       - main
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * *'
 
 concurrency:
   group: build-${{ github.event.number || github.ref }}-pr-check
