@@ -9,8 +9,8 @@ concurrency:
   group: build-${{ github.event.number || github.ref }}-pr-check
   cancel-in-progress: true
 
-permissions:
-  contents: read
+# permissions:
+#   contents: read
 
 jobs:
   test-single-channel:
