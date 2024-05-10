@@ -22,13 +22,16 @@ describe('action', () => {
   beforeEach(() => {
     jest.clearAllMocks()
 
+    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     errorMock = jest.spyOn(core, 'error').mockImplementation((error: any) => {
       console.log(`error called with ${error}`)
     })
 
     getInputMock = jest.spyOn(core, 'getInput').mockImplementation()
+
     setFailedMock = jest
       .spyOn(core, 'setFailed')
+    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
       .mockImplementation((failed: any) => {
         console.log(`setFailed called with ${failed}`)
       })
