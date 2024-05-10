@@ -35,13 +35,6 @@ jobs:
       - name: Install Dependencies
         id: install
         run: pnpm i --frozen-lockfile
-      - name: Send App to slack
-        uses: vaporif/slack-file-upload-action@${{ github.event.pull_request.head.sha }}
-        with:
-          token: ${{ secrets.SLACK_OAUTH_TOKEN }}
-          files: >
-            [
-              {"file": './samples/sample1.jpeg', "filename": "sample1.jpeg" },
-            ]
-          initial_comment: 'Test upload'
-          channel_id: C072N8BE71U
+
+      - name: test
+        run: pnpm test
