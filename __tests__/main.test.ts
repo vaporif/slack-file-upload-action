@@ -18,6 +18,8 @@ let getInputMock: jest.SpiedFunction<typeof core.getInput>
 let setFailedMock: jest.SpiedFunction<typeof core.setFailed>
 let setOutputMock: jest.SpiedFunction<typeof core.setOutput>
 
+const CHANNEL_ID = 'C072N8BE71U'
+
 describe('action', () => {
   beforeEach(() => {
     jest.clearAllMocks()
@@ -30,10 +32,19 @@ describe('action', () => {
   })
 
   it('uploads file', async () => {
+    const files = [
+      {"file": './samples/sample1.jpeg', "filename": "sample1.jpeg" },
+    ]
     getInputMock.mockImplementation(name => {
       switch (name) {
         case 'token':
           return `${env.SLACK_OUATH_TOKEN}`
+        case 'files':
+          return JSON.stringify(files);
+        case 'initial_comment':
+          return 'test upload'
+        case 'channel_id':
+          return CHANNEL_ID 
         default:
           return ''
       }

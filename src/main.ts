@@ -6,6 +6,7 @@ export async function run(): Promise<void> {
     const token = core.getInput('token')
     const files = core.getInput('files')
     core.debug(files)
+    console.log(token)
 
     const file_uploads = parseFilesInput(files)
 
@@ -30,10 +31,6 @@ export async function run(): Promise<void> {
 }
 
 function parseFilesInput(input: string): FileObject[] {
-  if (!input) {
-    throw new Error('files input is empty');
-  }
-
   let files: FileObject[] = [];
   try {
     files = JSON.parse(input) 
