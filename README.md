@@ -24,11 +24,9 @@ work with backslashes so you might need `${{ toJSON(variable) }}`
 
 ### `channel_id`
 
-Slack channel ID for upload
+**THIS IS NOT A CHANNEL NAME** Slack channel ID for upload
 
-**THIS IS NOT A CHANNEL NAME**
-
-Id is included in the url of a channel in web version.
+ID is included in the URL of a channel in web version.
 
 ### `thread_ts`
 
