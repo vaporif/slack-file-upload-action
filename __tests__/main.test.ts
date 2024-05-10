@@ -49,9 +49,9 @@ describe('action', () => {
 
     if (setFailedMock.mock.calls.length > 0) {
       console.log('setFailedMock was called with the following parameters:')
-      setFailedMock.mock.calls.forEach((call, index) => {
-        console.log(`Call ${index + 1}:`, call)
-      })
+      for (const ele of setFailedMock.mock.calls) {
+        console.log(`Call ${ele}`)
+      }
     }
     expect(setFailedMock).not.toHaveBeenCalled()
     expect(errorMock).not.toHaveBeenCalled()
