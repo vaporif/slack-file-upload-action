@@ -1,6 +1,6 @@
 # Slack file upload action
 
-[![Integration Tests](https://github.com/vaporif/slack-file-upload-action/actions/workflows/test-upload.yml/badge.svg)](https://github.com/vaporif/slack-file-upload-action/actions/workflows/test-upload.yml)
+[![Integration Tests](https://github.com/vaporif/slack-file-upload-action/actions/workflows/integration-tests.yml/badge.svg?branch=main)](https://github.com/vaporif/slack-file-upload-action/actions/workflows/integration-tests.yml)
 
 This action uploads file(s) to slack using v2 files API.
 
