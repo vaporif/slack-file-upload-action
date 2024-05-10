@@ -1,0 +1,22 @@
+
+name: Test Upload
+
+on:
+  pull_request:
+
+jobs:
+  test-single-channel:
+    name: Test upload single
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send App to slack
+        uses: vaporif/slack-file-upload-action@${{ github.event.pull_request.head.sha }}
+        with:
+          token: ${{ secrets.SLACK_OAUTH_TOKEN }}
+          files: >
+            [
+              {"file": './samples/sample1.jpeg', "filename": "sample1.jpeg" },
+            ]
+          initial_comment: 'Test upload'
+          channel_id: C072N8BE71U
